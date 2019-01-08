@@ -5,11 +5,16 @@ defmodule Todo.Application do
 
   use Application
 
+  require Logger
+
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
-      {Todo.Server, [name: Todo.Server]}      
+      {Plug.Cowboy,  scheme:  :http,  plug:  Todo.Router,  options:  [port:  3000]},
+		  {Todo.Server,  [name:  Todo.Server]}    
     ]
+
+    Logger.info("Starting application on port 3000")
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
