@@ -1,6 +1,6 @@
 # Todo
 
-**TODO: Add description**
+Basic HTTP server written using elixir and OTP
 
 ## Installation
 
